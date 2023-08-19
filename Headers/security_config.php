@@ -36,12 +36,13 @@ else {
 }
 
 function regenerateSessionIn() {
-    session_regenerate_id(true);
+    
 
     $newSession = session_create_id();
     $userId = $_SESSION["userId"];
     $session_id = $newSession . "_" . $userId;
     session_id($session_id);
+    session_regenerate_id(true);
 
     $_SESSION["timePassed"] = time();
 }

@@ -1,8 +1,8 @@
 <!-- Including the necessary files -->
 <?php 
     require_once("Headers/security_config.php");
-    require_once("MVC Connection/SignupView.php");
-    require_once("MVC Connection/SigninView.php");
+    require_once("MVC_Connection/SignupView.php");
+    require_once("MVC_Connection/SigninView.php");
 ?>
 
 <!-- HTML Start -->
@@ -14,13 +14,13 @@
     <title>SafeSpace</title>
 
     <!-- Stylesheets and icons -->
-    <link rel="stylesheet" href="CSS/reset.css">
-    <link rel="stylesheet" href="CSS/styles.css"> 
+    <link rel="stylesheet" href="CSS/Reset.css">
+    <link rel="stylesheet" href="CSS/LoginStyles.css"> 
 </head>
 <body>
     <section class="container">
         <h1 class="title">Sign in</h1>        
-            <form id="form" action="MVC Connection/Connection.php" method="post">
+            <form id="form" action="MVC_Connection/Connection.php" method="post">
                 <div class="inputs">
                     <div class='input-field signup-fields'>
                          <img class='icons' src = 'assets/user-icon.svg' alt='User Icon'>

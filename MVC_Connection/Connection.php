@@ -69,14 +69,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
              if($SigninController->isInputMissing($email,$password)){
                  $errors["missingInput"] = "A Field is missing!";
-             }
-             if (!$SigninController->isEmailTaken($email)){
-                $errors["emailRegistered"] = "Email not registered!";
-            } else {
-                if (!$SigninController->passwordCheck($password, $email)){
-                    $errors["passwordCheck"] = "Incorrect Password!";
+             } else {
+                if (!$SigninController->isEmailTaken($email)){
+                    $errors["emailRegistered"] = "Email not registered!";
+                } else {
+                    if (!$SigninController->passwordCheck($password, $email)){
+                        $errors["passwordCheck"] = "Incorrect Password!";
+                    }
                 }
-            }
+             }
+             
 
 
             if ($errors){
@@ -88,12 +90,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             }
 
                 //? creating a session using User ID
+            require_once("../Headers/security_config.php");
+
             $newSession = session_create_id();
             $result = $SigninController->getUser($email);
 
             $userId = $result["id"];
             $session_id = $newSession . "_" . $userId;
             session_id($session_id);
+            session_regenerate_id(true);
+
+            $_SESSION["timePassed"] = time();
 
             //? Setting the necessary Variables
             $_SESSION["userId"] =  $userId;
@@ -101,9 +108,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $_SESSION["Fullname"] = $result["FullName"];
             $_SESSION["LoggedIn"] = true;
 
-            $_SESSION["timePassed"] = time();
 
-            header("Location: ../index.php?login=success");
+            header("Location: ../homePage.php?login=success");
             unset($_POST["SignIn"]);
 
             die();

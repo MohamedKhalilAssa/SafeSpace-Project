@@ -30,7 +30,7 @@ SignInButton.addEventListener("click",(element) => {
     
     
     if (SignInButton.classList.contains("inactive")){
-        
+        element.preventDefault();
 
         SignInButton.classList.add("active");
         SignInButton.classList.remove("inactive");

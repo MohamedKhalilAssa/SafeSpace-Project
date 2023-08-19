@@ -47,8 +47,8 @@ body{
     bottom: -5px;
     left:30%;
     opacity: 0;
-    transition: all 0.5s ease-in;
-    animation: underlineAppear 0.7s forwards;
+    transition: all 1s ease-in;
+    animation: underlineAppear 0.85s ease-in forwards;
 }
 
 form {
