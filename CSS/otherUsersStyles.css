@@ -1,0 +1,216 @@
+
+
+/* container */
+
+.container{
+    width:90%;
+    min-height:calc(98vh - 7vh);
+    margin: 2vh auto;
+}
+
+.profile-container{
+    width:100%;
+    height:25vh;
+    background-color: var(--input-color-gray);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 18px;
+    position: relative;
+}
+.image{
+    width:20vh;
+    height:20vh;
+    border-radius: 50%;
+    overflow: hidden;
+    margin:3rem;
+}
+.image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+#Name{
+    font-size: 3.3rem;
+}
+.email{
+    font-size: 1.2rem;
+    padding-left:1rem;
+}
+
+/* buttons */
+.btn-container{
+   
+    display: flex;
+    align-items: center;
+    gap:1rem;
+    position: absolute;
+    right: 1rem;
+}
+.btn {
+    width: 9rem;
+    height:2.5rem;
+    border:0;
+    border-radius: 18px;
+    background-color:var(--submitColor);
+    color:var(--titleColor);
+    opacity: 0.7;
+    cursor:pointer;
+    transition:all 0.2s ease-in;
+}
+.btn:hover{
+    opacity:1;
+    transform: scale(1.1);
+}
+.settings{
+    display: none;
+    cursor: pointer;
+    opacity: 0.5;
+}
+.friends{
+    background-color: rgb(122, 188, 122);
+    opacity:1;
+    cursor: none;
+}
+.friends:hover{
+    transform: scale(1);
+}
+.pending{
+    background-color: lightgray;
+    color: #777;
+    opacity: 1;
+    cursor: not-allowed;
+}
+.pending:hover{
+    opacity:1;
+    transform: scale(1);
+}
+.ignore{
+    background-color: lightgray;
+    color: #777;
+}
+@media screen and (max-width:1020px){
+    .settings{
+        display: inline-block;
+        position: absolute;
+        right:1rem;
+        
+    }
+    .settings.clicked{
+        animation: rotate 1s infinite linear ;
+    }
+
+    .btn-container{
+        display: none;
+        width: 500px;
+        height:0;
+        right: 1rem;
+        background-color:#1e2023;
+        justify-content: center;
+        bottom: 0;
+        border-radius: 18px;
+        border-top-right-radius: 0;
+        transition: all 0.3s ease-in;    
+    }
+    .btn-container.active{
+        display: flex;
+        animation: slideDown 0.4s ease-in  forwards ;
+        z-index: 100;
+    }
+    .btn-container.inActive{
+        display: flex;
+        animation: slideUp 0.4s ease-in  forwards ;
+        z-index: -1;
+    }
+    .settings{
+        top:0.4rem;
+    }
+}
+
+
+@media screen and (max-width:700px){
+   .btn-container{
+    width:calc(100% - 1rem);
+   }
+    #Name{
+        font-size: 2.5rem;
+    }
+    .email{
+        font-size: 1rem;
+        padding-left:10px;
+    }
+    .image{
+        width:150px;
+        height:150px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin:1rem;
+    }
+    
+}
+
+@media screen and (max-width:539px){
+    .profile-container{
+        min-height:20vh;
+        flex-direction: column;
+    }
+     #Name{
+         font-size: 2.2rem;
+         text-align: center;
+     }
+     .email{
+         font-size: 1rem;
+         padding-left:7px;
+         text-align: center;
+     }
+     .image{
+         width:100px;
+         height:100px;
+         border-radius: 50%;
+         overflow: hidden;
+         margin:1rem;
+     }
+     .btn-container.active{
+        flex-direction: column;
+     }
+ }
+
+.noPost{
+    font-size: 2.5rem;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    margin:0 auto;
+}
+/* animations */
+
+
+@keyframes rotate {
+    to {
+        rotate: 180deg;
+    }
+}
+@keyframes slideDown {
+    from {
+        height:0;
+        bottom:-10px;
+    }
+    to{
+
+        height:250px;
+        bottom:-260px;
+    }
+}
+@keyframes slideUp {
+    from {
+        height:250px;
+        bottom:-260px;
+    }
+    to{
+        
+        height:0;
+        bottom:-10px;
+        opacity: 0;
+    }
+}
+

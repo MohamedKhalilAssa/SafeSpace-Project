@@ -1,0 +1,224 @@
+
+/* setting up the containers */
+.container{
+    width:90%;
+    min-height: 88vh;
+    max-height: 88vh;
+    background-color:var(--backgroundColor);
+    margin: 3vh auto;
+    border-radius: 35px;
+    padding:3rem 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.friends{
+    width: 30%;
+    padding:1rem;
+    border-radius: 24px;
+    border-top-right-radius:0 ;
+    border-bottom-right-radius: 0;
+    height:80vh;
+    word-break: break-all;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    background-color: var(--backgroundColor-main);
+    border-right:2px solid var(--submitColor) ;
+    border-top:2px solid var(--submitColor) ;
+    border-bottom:2px solid var(--submitColor) ;
+
+}
+
+/* setting up user styling */
+.user,.user2{
+    position: relative;
+    background-color: var( --input-color-gray);
+    width:100%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    border-radius: 12px;
+    cursor:pointer;
+    transition: all 0.2s ease-in;
+    margin-bottom:1rem;
+}
+.user:hover,.user2:hover{
+  transform: scale(1.01);
+}
+.stateInfo,.stateInfo2{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap:1rem;
+    margin-right:1rem;
+    position:absolute;
+    right:0;
+    bottom:0.25rem;
+}
+.stateInfo{
+    left:110px;
+    gap:0.5rem;
+}
+.stateInfo p{
+    order:2;
+    padding-top:0.25rem
+}
+.stateInfo2{
+    top:50%;
+    transform: translateY(-50%);
+}
+.offline-circle, .online-circle{
+    width:17px;
+    height:17px;
+    background-color:gray;
+    border-radius: 50%;
+}
+.online-circle{
+    background-color: lightgreen;
+}
+.name {
+    font-size: 1.2rem;
+    color:var(--titleColor)
+}
+.image-container{
+    width: 70px;
+    height:70px;
+    margin:1rem;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0 ;
+   
+}
+.image-container img {
+    width:100%;
+    height:100%;
+    object-fit: cover;
+}
+
+/* messages part */
+
+.chat-container{
+    width:50%;
+    padding:1rem;
+    border-radius: 24px;
+    border-top-left-radius:0 ;
+    border-bottom-left-radius: 0;
+    height:80vh;
+    word-break: break-all;
+    overflow: hidden;
+    background-color:#1e2023;
+    border-top:2px solid var(--submitColor) ;
+    border-bottom:2px solid var(--submitColor) ;
+    position:relative;
+}
+.chars{
+    font-size: 0.9rem;
+    position: absolute;
+    bottom:0;
+    right:25%;
+}
+.submitMessage{
+    margin:1rem;
+    margin-left:0;
+    height:7vh;
+    width:96%;
+    margin-left:2%;
+    background-color: var(--backgroundColor);
+    border-radius: 10px;
+    position: absolute;
+    bottom:0;
+    left:0;
+    display: flex;
+    align-items: center ;
+    justify-content: space-between;
+    padding: 0 1rem;
+}
+.submitMessage textarea{
+    background-color: transparent;
+    height:100%;
+    width:75%;
+    border:0;
+    outline:0;
+    resize: none;
+    padding:0.5rem;
+}
+.icon-container{
+    width:80px;
+    height:80px;
+    cursor: pointer;
+    transition: all 0.2s ease-in;
+}
+.icon-container:hover{
+    transform: scale(1.03);
+}
+.icon-container img{
+    width:80px;
+    height:80px;
+
+}
+
+/* messages styling */
+.messages{
+    margin-top:2rem;
+    width:100%;
+    height: calc(65vh - 100px);
+    overflow-y: auto;
+    position: relative;
+}
+.sent{
+    max-width:70%;
+    padding:1rem;
+    margin-left:30%;
+    margin-bottom:1rem;
+    background-color: var(--backgroundColor);
+    border-radius: 16px;
+}
+.received{
+    max-width:70%;
+    padding:1rem;
+    margin-bottom:1rem;
+    background-color:var(--submitColor);
+    border-radius: 16px;
+}
+
+
+  /* Firefox */
+  * {
+    scrollbar-width: auto;
+    scrollbar-color: #000000 #ffffff;
+  }
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 16px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #000000;
+    border-radius: 10px;
+    border: 3px solid var(--backgroundColor);
+  }
+
+@media screen and (max-width:1150px){
+    .container{
+        flex-direction: column;
+        min-height: 88vh;
+        max-height: 10000vh;
+    }
+    .friends{
+        width:100%;
+        border:0;
+        border-radius: 12px;
+        margin-bottom: 1rem;
+    }
+    .chat-container{
+        width:100%;
+        border:0;
+        border-radius: 12px;
+    }
+}

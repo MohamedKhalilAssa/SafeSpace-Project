@@ -1,5 +1,5 @@
 <?php
-require_once("../Headers/DBC.php");
+require_once(dirname(__DIR__) . "/Headers/DB.php");
 
 
 class CheckWithDatabase extends DataBase{
@@ -39,12 +39,30 @@ class QueryDatabase extends DataBase{
             $statement->bindParam(':email',$email);
             $statement->bindParam(':FullName',$newName);
             $statement->bindParam(':pass',$newPass);
-    
+            
             $statement->execute();
 
             $statement = null;
         } catch(PDOException $e){
             return "Insert Query Failed!" . $e->getMessage();
+            die();
+        }
+
+    }
+    protected function setImage(string $imageName, string $email){
+        try{
+            //? Preparing the Query 
+            $sql = "UPDATE users SET imageName = :imageName WHERE email = :email;";
+            $statement = $this->connect()->prepare($sql);
+
+            //?execution
+            $statement->bindParam(':imageName',$imageName);
+            $statement->bindParam(':email',$email);
+            $statement->execute();
+
+          
+        } catch(PDOException $e){
+            return "Update Query Failed!" . $e->getMessage();
             die();
         }
 

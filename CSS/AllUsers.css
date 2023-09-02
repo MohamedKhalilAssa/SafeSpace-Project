@@ -1,0 +1,146 @@
+/* styling starts */
+
+/* Container */
+.container{
+    width:70%;
+    min-height: calc(95vh - 7vh);
+    background-color:var(--backgroundColor);
+    margin: 3vh auto;
+    border-radius: 35px;
+    padding:3rem 10rem;
+}
+
+.State-container{
+    width:100%;
+    min-height:35vh;
+}
+.State{
+    font-size: 2.4rem;
+}
+hr{
+    width:24%;
+    margin-left: 5px;
+    margin-bottom: 2rem;
+}
+.users-container{
+    width:100%;
+    min-height:20vh;
+}
+.user{
+    width:100%;
+    background-color: var(--input-color-gray);
+    height:120px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+    margin-bottom:1rem;
+}
+
+/* styling user cards */
+
+.image-container{
+    width:100px;
+    height:100px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin:2rem;
+    
+}
+.image-container img {
+    width:100%;
+    height:100%;
+    object-fit: cover;
+}
+.text-container {
+    word-break: break-word;
+}
+.Name{
+    font-size:2rem;
+    color:var(--title-color);
+    transition: all 0.2s ease-in;
+}
+.Name:hover{
+    color:var(--submitColor);
+    transform: scale(1.1);
+}
+.email{
+    font-size:1rem;
+    margin-top:0.5rem;
+    padding-left:0.5rem;
+}
+
+.stateInfo{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap:1rem;
+    margin-right:2rem;
+    position:absolute;
+    right:3rem;
+}
+.online-circle{
+    width:20px;
+    height:20px;
+}
+
+.info{
+    font-size: 1.2rem;
+}
+.offline-circle{
+    width:17px;
+    height:17px;
+    background-color:gray;
+    border-radius: 50%;
+}
+
+/* media queries */
+@media screen and (max-width:1400px){  
+    .container{
+        width:90%;
+        padding:3rem 2rem;
+    }
+    .user{
+        min-height:190px;
+    } 
+    .stateInfo{
+        gap:0.5rem;
+    }
+    .info{
+        order: 2;
+        font-size: 1rem;
+    }
+    .online-circle{
+        margin-bottom: 3px;
+        width:17px;
+    }
+}
+@media screen and (max-width:775px){
+    .stateInfo{
+        bottom:1rem;
+        left:165px;
+    }
+    .Name{
+        font-size: 1.9rem;
+    }
+}
+@media screen and (max-width:550px){
+    .image-container{
+        flex-shrink: 0;
+        width:80px;
+        height:80px;
+        margin: 0 1rem;
+    }
+    .container{
+        width:100%;
+        padding:3rem 0.5rem;
+    }
+    .Name{
+        font-size: 1.5rem;
+    }
+    .email{
+        padding-left: 0 ;
+        font-size: 1rem;
+    }
+}

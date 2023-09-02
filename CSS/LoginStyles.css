@@ -15,26 +15,96 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 }
 /* ends */
-
+/* Wrapper */
+.Content-Wrapper{
+    height:100%;
+    width:100%;
+    display: flex;
+    flex-direction: row-reverse;
+}
+/* Side design */
+.side {
+    background: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.8)),url("../assets/background.jpg");
+    background-size: cover;
+    background-position: center;
+    width:50%;
+    height:100vh;
+    position: relative;
+    right: -100%;
+    animation: comeFromRight 1.2s ease-in-out forwards;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+.welcome {
+    font-size: 3rem;
+    margin-bottom:2rem;
+    position: absolute;
+    top:10rem;
+    text-align: center;
+    overflow: hidden;
+}
+.icons-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 12rem;
+    position: relative;
+}
+.users-icon{
+    transition: all 0.3s ease-in;
+    animation :popupIcons 1s ease-in 3s forwards;
+    width : 0;
+}
+.mail{
+    width:90px;
+    animation:"";
+    position: absolute;
+    right : 8rem;
+    opacity:0;
+    top:0;
+    bottom:0;
+    margin: auto;
+    animation: mail 2.5s ease-in-out  3.5s infinite alternate;
+}
 /* Container styling  */
 
 .container{
     background: var(--backgroundColor);
-    height:70vh;
-    width:500px;
-    border-radius: 20px;
+    height:100vh;
+    width:50%;
+    position: relative;
+    left : -100%;
+    animation: comeFromLeft 1.2s ease-in-out  1.2s forwards;
 }
 /* ends */
 
 /* inside Elements styling  */
 
+header {
+    margin-bottom: 2rem;
+    font-size: 3.5rem;
+    padding:2rem;
+    padding-bottom: 0;
+    position: relative;
+    top : -100%; 
+    animation: logoAppear 1.4s ease-in-out 2.6s  forwards;
+}
+
+.orange {
+    color : var(--submitColor);
+}
+
 .title {
     text-align: center;
-    margin: 3rem auto;
-    font-size: 2.3rem;
+    font-size: 3rem;
     position: relative;
+    margin: 0rem auto 3rem auto;
 }
 
 .title::after{
@@ -47,8 +117,7 @@ body{
     bottom: -5px;
     left:30%;
     opacity: 0;
-    transition: all 1s ease-in;
-    animation: underlineAppear 0.85s ease-in forwards;
+    animation: underlineAppear 0.85s ease-in 2s forwards;
 }
 
 form {
@@ -57,6 +126,8 @@ form {
     align-items: center;
     flex-direction: column;
     gap:5rem;
+    margin-top:0;
+
 }
 
 /* form Elements styling  */
@@ -80,7 +151,45 @@ form {
     max-height: 0;
     transition: all 0.3s ease-in;
 }
-
+/* Image Styling */
+    #image-upload{
+        display: inline-block;
+        width:90px;
+        height:90px;
+        border:5px solid  var(--input-color-gray);
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        margin: auto;
+        overflow: hidden;
+    }
+    .plus-icon{
+        width:50px;
+        height:50px;
+        opacity:0.7;
+        object-fit: cover;
+    }
+    #img{
+        display: none;
+    }
+    .image-field{
+        margin-bottom:0rem;
+        opacity: 0;
+        transition: all 0.3s ease-in;
+    }
+    #img-para{
+        width:100%;
+        display: inline-block;  
+        margin-top:0.5rem;
+        text-align: center;
+    }
+    .text-center{
+        text-align: center;
+        width:100%;
+    }
+/* ends */
 .icons{
     margin:auto 1rem;
     height: 30px;
@@ -106,7 +215,6 @@ form {
     margin-top: 1rem;
     opacity: 0.7;
     cursor:pointer;
-    transition: all 0.3s ease;
 }
 
 .btn:hover{
@@ -121,10 +229,10 @@ form {
 .errors{
     width:100%;
     height:10vh;
-    margin-top: 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
+    
 }
 p.SignupError {
     color: red;
@@ -141,3 +249,91 @@ p.success{
         transform: translateX(-50%);
     }
 } 
+@keyframes comeFromRight {
+    to{
+        right: 0;
+    }
+}
+@keyframes comeFromLeft {
+    to{
+        left: 0;
+    }
+}
+@keyframes logoAppear {
+    to {
+        top: 0;
+    }
+}
+@keyframes popupIcons{
+    to {
+        width: 180px;
+    }
+}
+@keyframes mail{
+    0% {
+        right : 9rem;
+        opacity: 0;
+    }
+
+    50%{
+        opacity: 1;
+    }
+    100% {
+        right : 75%;
+        opacity:0;
+    }
+}
+@keyframes mail1400px{
+    0% {
+        right : 9rem;
+        opacity: 0;
+    }
+
+    50%{
+        opacity: 1;
+    }
+    100% {
+        right : 60%;
+        opacity:0;
+    }
+}
+/* media Queries */
+
+
+@media screen and (max-width:1400px){
+    .mail{
+        animation: mail1400px 2.5s ease-in-out  3.5s infinite alternate;
+
+    }
+}
+@media screen and (max-width:1020px){
+    .side {
+        display: none;
+    }
+    .Content-Wrapper{
+        align-items: center;
+        justify-content: center;
+    }
+    .container{
+        height:90vh;
+        width:95%;
+        border-radius: 18px;
+    }
+    .errors{
+        position: relative;
+    top:-4rem;
+    }
+}
+@media screen and (max-width:550px){
+    .text{
+     font-size: 2.8rem;
+    }
+     .title{
+         font-size: 2.4rem;
+     }
+ }
+@media screen and (max-width:350px){
+    .inputs{
+        width:95%;
+    }
+}

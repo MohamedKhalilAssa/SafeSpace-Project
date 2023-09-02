@@ -1,0 +1,169 @@
+/* variables used over different pages*/
+:root {
+    --backgroundColor-main :hsl(216, 12%, 8%) ;
+    --backgroundColor:hsl(213, 19%, 18%);
+    --titleColor:hsl(0, 0%, 100%);
+    --ParagraphColor:hsl(217, 12%, 63%);
+    --submitColor: hsl(25, 97%, 53%);
+    --input-color-gray: rgb(255,255,255,0.05);
+}
+
+*{
+    scroll-behavior: smooth;
+}
+body{
+    background-color: var(--backgroundColor-main);
+}
+
+header{
+    width:90%;
+    height:7vh;
+    background-color: var(--backgroundColor);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding:1rem;
+    border-bottom-right-radius:18px;
+    border-bottom-left-radius:18px;
+    margin-left: auto;
+    margin-right: auto;
+    transition: all 0.3s ease-in-out;
+    position: relative;
+}
+nav{
+    position: absolute;
+    right:1rem;
+    top:1.2rem;
+}
+.logo{
+    font-size: 2.5rem;
+    color: var(--titleColor);
+    position: absolute;
+    top:0.5rem;   
+}
+.orange {
+    color:var(--submitColor);
+}
+.links{
+    font-size: 1.5rem;
+    margin-left:2rem;
+    color: var(--titleColor);
+    transition: all 0.25s ease-in;
+    position: relative;
+}
+.links:hover{
+    color:var(--submitColor);
+}
+
+.links.active::after{
+    content: "";
+    width:3rem;
+    height:2px;
+    border: 2px solid var(--submitColor);
+    border-radius: 40px;
+    position: absolute;
+    bottom: -5px;
+    left: 30%;
+    opacity: 0;
+    animation: underlineAppear 0.4s ease-in 1s forwards;
+}
+
+.burger{
+    display: none;
+}
+
+/* Animations */
+@keyframes underlineAppear{
+    to {
+        opacity: 1;
+        left:50%;
+        transform: translateX(-50%);
+    }
+} 
+
+
+/* media queries */
+
+@media screen and (max-width:790px){   /* burger navbar */
+    header.btnIsClicked{
+        height:50vh;
+        align-items: flex-start;
+    }
+    header.btnIsClicked nav{
+        width:100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap:2rem;
+        position: absolute;
+        left:0;
+        bottom:0rem;
+    }
+    header.btnIsClicked nav .links{
+        font-size: 1.8rem;
+    }
+    nav{
+        display: none;
+    }
+    .burger{
+        position: absolute;
+        right:1rem;
+        top:1.2rem;
+        min-width:30px;
+        min-height:10px;
+        display: flex;
+        flex-direction: column;
+        gap:7px;
+        cursor: pointer;
+        transition: all 0.3s ease-in;
+        background: transparent;
+        border: none;
+        align-items: center;
+    }
+    .burger:hover{
+        transform: scale(1.1);
+    }
+    
+    .burger:hover .both{
+        width:80%;
+    }
+    .burger:hover #second{
+        width:20%;
+    }
+    .slide{
+        width:100%;
+        height:3px;
+        background-color: var(--titleColor);
+        transition: all 0.3s ease-in;
+    }
+    .burger.btnClicked{
+        top:1.9rem;
+    }
+    .burger.btnClicked #second{
+        display: none;
+    }
+    .burger.btnClicked #first{
+        background-color: red;
+        rotate: 45deg;
+    }
+    .burger.btnClicked #last{
+        background-color: red;
+        rotate: -45deg;
+        transform: translate(8px, -6px);
+    }
+}
+@media screen and (max-width:480px){
+    header{
+        width:100%;
+    }
+    .logo{
+        font-size: 2rem;
+        top:0.8rem;
+    }
+    header.btnIsClicked nav{
+        bottom:0;
+    }
+  
+}

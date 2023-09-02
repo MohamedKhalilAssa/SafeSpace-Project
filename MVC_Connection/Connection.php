@@ -11,9 +11,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             //*Error Handling
             $Controller = new CheckInput();
             $errors = [];
-            if($Controller->isInputMissing($_POST["Fullname"], $_POST["email"], $_POST["password1"],$_POST["password2"])){
+            $image_errors =[];
+            if($Controller->isInputMissing($_POST["Fullname"], $_POST["email"], $_POST["password1"],$_POST["password2"], $_FILES["Image"])){
                 $errors["missingInput"] = "A Field is missing!";
-            }
+            } 
             if(!$Controller->validateEmail($_POST["email"])){ 
                 $errors["validateEmail"] = "Invalid Email!";
             }
@@ -26,6 +27,31 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             if  (!$Controller->validatePassword($_POST["password1"])){
                 $errors["validatePass"] = "Password should contain at least one capital and special char!";
             }
+
+            // ? image error handling 
+            if(isset($_FILES["Image"])){
+                $file = $_FILES["Image"];
+                
+                if($file["size"] > 0){
+                    if (!$Controller->isExtensionRight($file)){
+                        $image_errors["extension"] = "File should be PNG, JPEG, or JPG!";
+                        
+                    } else {
+                        if(!$Controller->error($file)){
+                            $image_errors["error"] = "An error happened while Uploading!";
+                        } else {
+                            if (!$Controller->imageSize($file)){
+                                $image_errors["Size"] = "Size should be below 20mbs";
+                            }
+                        }
+                    }
+                } else {
+                    $image_errors["missing"] = "Missing Image!";
+                }
+               
+            }
+            
+                
             require_once("../Headers/security_config.php");
 
             if ($errors){
@@ -37,6 +63,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 ];
 
                 header("Location: ../index.php");
+                if(empty($image_errors) ){
+                    die();
+                }
+              
+            }
+            if($image_errors){
+                $_SESSION["ImageErrors"] = $image_errors;
+
+                header("Location:../index.php?imageUpload=failed");
                 die();
             }
 
@@ -44,6 +79,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $Controller2 = new UseInput();
 
             $Controller2->SignUp($_POST["Fullname"], $_POST["email"], $_POST["password1"]);
+            
+            $Controller2->uploadImage($_FILES["Image"],$_POST["email"]);
 
             header("Location: ../index.php?signup=success");
             $_SESSION["signup"] = true;
@@ -90,13 +127,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             }
 
                 //? creating a session using User ID
-            require_once("../Headers/security_config.php");
+            require_once(dirname(__DIR__) . "/Headers/security_config.php");
 
             $newSession = session_create_id();
             $result = $SigninController->getUser($email);
 
             $userId = $result["id"];
             $session_id = $newSession . "_" . $userId;
+
             session_id($session_id);
             session_regenerate_id(true);
 
@@ -105,11 +143,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             //? Setting the necessary Variables
             $_SESSION["userId"] =  $userId;
             $_SESSION["email"] = $result["Email"];
+            setcookie("user_id",  $_SESSION["userId"], 0, "/");
             $_SESSION["Fullname"] = $result["FullName"];
+            $_SESSION["imageName"] = $result["imageName"];
             $_SESSION["LoggedIn"] = true;
+            
+            if(isset($_SESSION["LoggedIn"]) && $_SESSION["LoggedIn"] ){
+                $SigninController->Online($_SESSION["email"]);
+            } 
 
-
-            header("Location: ../homePage.php?login=success");
+            header("Location: ../ProfilePage.php?login=success&id=" . $_SESSION["userId"]);
             unset($_POST["SignIn"]);
 
             die();

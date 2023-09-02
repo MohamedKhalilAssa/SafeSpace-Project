@@ -1,7 +1,7 @@
 <?php
 
 require_once("SigninModel.php");
-require_once("../Headers/security_config.php");
+require_once(dirname(__DIR__) . "/Headers/security_config.php");
 
 
 
@@ -38,5 +38,11 @@ class CheckSigninInput extends CheckWithDatabase2 {
             return false;
         }
 
+    }
+    public function Online($email) {
+                $this->onlineState($email);
+    }
+    public function Offline($email){
+        $this->offlineState($email);
     }
 }

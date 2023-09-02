@@ -1,0 +1,151 @@
+
+
+/* container */
+
+.container{
+    width:90%;
+    min-height:calc(98vh - 7vh);
+    margin: 2vh auto;
+}
+
+.profile-container{
+    width:100%;
+    height:25vh;
+    background-color: var(--input-color-gray);
+    display: flex;
+    flex-direction: row;
+    border-radius: 18px;
+    position: relative;
+    transition: all 0.3s ease-in;
+}
+.image{
+    width:20vh;
+    height:20vh;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 3rem;
+    position: absolute;
+    top:1rem;
+    flex-shrink: 0;
+}
+.text-container {
+    position: absolute;
+    left:17rem;
+    top:4rem;
+}
+.image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+#Name{
+    font-size: 3.3rem;
+}
+.email{
+    font-size: 1.2rem;
+    padding-left:1rem;
+}
+
+.btn-container{
+   
+    display: flex;
+    align-items: center;
+    bottom:50%;
+    transform: translateY(50%);
+    gap:1rem;
+    position: absolute;
+    right: 1rem;
+}
+.btn {
+    width: 9rem;
+    height:2.5rem;
+    border:0;
+    border-radius: 18px;
+    background-color:var(--submitColor);
+    color:var(--titleColor);
+    opacity: 0.7;
+    cursor:pointer;
+    transition:all 0.2s ease-in;
+}
+.btn:hover{
+    opacity:1;
+    transform: scale(1.1);
+}
+.settings{
+    display: none;
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+
+@media screen and (max-width:990px){
+    .settings{
+        display: inline-block;
+        position: absolute;
+        top:1rem;
+        right:1rem;
+        
+    }
+    .settings.clicked{
+        animation: rotate 1s infinite linear ;
+    }
+    .btn-container{
+        display: none;
+    }
+    .profile-container.settingsClicked{
+        height:400px;
+    }
+    .profile-container.settingsClicked .btn-container{
+        display: flex;
+        justify-content: center;
+        position: absolute;
+        bottom:2rem;
+        left:50%;
+        transform: translateX(-50%);
+    }
+    #Name{
+        font-size: 2.6rem;
+    }
+}
+@media screen and (max-width:730px){
+    .image{
+        width:15vh;
+        height:15vh;
+        top:2rem;
+    }
+    .text-container{
+        left: 13rem;
+    }
+}
+@media screen and (max-width:630px){
+    .profile-container{
+        height:35vh;
+    }
+    .image{
+        margin:0;
+        left:50%;
+        transform: translateX(-50%);
+    }
+    .text-container{
+        width:100%;
+        top:20vh;
+        left:50%;
+        transform: translateX(-50%);
+    }
+    #Name{
+        text-align: center;
+    }
+    .email{
+        text-align: center;
+    }
+}
+@media screen and (max-width:380px){
+    .container{
+        width:100%;
+    }
+}
+@keyframes rotate {
+    to {
+        rotate: 180deg;
+    }
+}
