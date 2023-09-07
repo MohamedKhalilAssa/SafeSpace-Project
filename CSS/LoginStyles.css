@@ -125,7 +125,7 @@ form {
     display: flex;
     align-items: center;
     flex-direction: column;
-    gap:5rem;
+    gap:2rem;
     margin-top:0;
 
 }
@@ -151,6 +151,7 @@ form {
     max-height: 0;
     transition: all 0.3s ease-in;
 }
+
 /* Image Styling */
     #image-upload{
         display: inline-block;
@@ -195,6 +196,14 @@ form {
     height: 30px;
     width:20px;
     opacity: 0.5;
+}
+.eyes1, .eyes2{
+    width:40px;
+    max-height:35px;
+    cursor: pointer;
+}
+.eyes2{
+    max-height:0;
 }
 .input{
     background: transparent;
@@ -320,8 +329,9 @@ p.success{
         border-radius: 18px;
     }
     .errors{
-        position: relative;
-    top:-4rem;
+        position: absolute;
+        bottom:-3rem;
+        z-index: 0;
     }
 }
 @media screen and (max-width:550px){

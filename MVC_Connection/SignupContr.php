@@ -4,8 +4,8 @@ require_once("../Headers/security_config.php");
 
 
 class CheckInput extends CheckWithDatabase {
-    public function isInputMissing(string $name,string $email,string $pass1 , string $pass2, $file){
-        if (empty($name) || empty($email) || empty($pass1) || empty($pass2) || empty($file)){
+    public function isInputMissing(string $name,string $email,string $pass1 , string $pass2, ){
+        if (empty($name) || empty($email) || empty($pass1) || empty($pass2)){
             return true;
         }
         else {

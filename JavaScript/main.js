@@ -113,6 +113,7 @@ function signupFieldsAppear(signup,Icons) {
     Icons.forEach((icon)=> {
         icon.style.maxHeight="30px";
     })
+    $(".eyes2").css("max-height","35px");
 }
 function signupFieldsDisappear(signup,Icons) {
     signup.forEach((field) => {
@@ -121,6 +122,7 @@ function signupFieldsDisappear(signup,Icons) {
     Icons.forEach((icon)=> {
         icon.style.maxHeight="0";
     })
+    $(".eyes2").css("max-height","0");
 }
 
 function setActive(Element){
@@ -171,7 +173,30 @@ imageInput.addEventListener("change",()=>{
 });
 
 
+// hide password and show
 
+$(".eyes1").click(()=>{
+    $(".eyes1").toggleClass("show");
+
+    if($(".eyes1").hasClass("show")){
+        $(".password1").attr("type","text");
+        $(".eyes1").attr("src","assets/eyeBarred.svg")
+    } else{
+        $(".password1").attr("type","password");
+        $(".eyes1").attr("src","assets/eye.svg")
+    }
+})
+$(".eyes2").click(()=>{
+    $(".eyes2").toggleClass("show");
+
+    if($(".eyes2").hasClass("show")){
+        $(".password2").attr("type","text");
+        $(".eyes2").attr("src","assets/eyeBarred.svg")
+    } else{
+        $(".password2").attr("type","password");
+        $(".eyes2").attr("src","assets/eye.svg")
+    }
+})
 
 // let xhr = new XMLHttpRequest();
 // setInterval(function(){

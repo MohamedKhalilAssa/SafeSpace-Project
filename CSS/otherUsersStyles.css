@@ -18,6 +18,9 @@
     border-radius: 18px;
     position: relative;
 }
+.text-container {
+    max-width: 55%;
+}
 .image{
     width:20vh;
     height:20vh;
@@ -128,12 +131,12 @@
 }
 
 
-@media screen and (max-width:700px){
+@media screen and (max-width:900px){
    .btn-container{
     width:calc(100% - 1rem);
    }
     #Name{
-        font-size: 2.5rem;
+        font-size: 2.2rem;
     }
     .email{
         font-size: 1rem;
@@ -154,8 +157,11 @@
         min-height:20vh;
         flex-direction: column;
     }
+    .text-container{
+        max-width: 100%;
+    }
      #Name{
-         font-size: 2.2rem;
+         font-size: 1.9rem;
          text-align: center;
      }
      .email{

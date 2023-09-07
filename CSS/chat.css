@@ -68,7 +68,7 @@
     top:50%;
     transform: translateY(-50%);
 }
-.offline-circle, .online-circle{
+.offline-circle, .online-circle,.unread{
     width:17px;
     height:17px;
     background-color:gray;
@@ -166,23 +166,30 @@
     overflow-y: auto;
     position: relative;
 }
-.sent{
+.sent , .received{
     max-width:70%;
     padding:1rem;
     margin-left:30%;
     margin-bottom:1rem;
     background-color: var(--backgroundColor);
     border-radius: 16px;
+    display: flex;
+    flex-direction: column;
 }
 .received{
-    max-width:70%;
-    padding:1rem;
-    margin-bottom:1rem;
     background-color:var(--submitColor);
-    border-radius: 16px;
+    margin-left:0;
+}
+.date{
+    font-size: 0.7rem;
+    align-self: flex-end;
 }
 
-
+.unread {
+    background-color: rgb(197, 70, 70);
+    position: absolute;
+    right:1rem; 
+}
   /* Firefox */
   * {
     scrollbar-width: auto;

@@ -27,9 +27,9 @@ try{
    
     if($result){
             if($result["sender_id"] == $connectedUser){
-                echo "<div class='sent'>". $result["message"] ."</div>";
+                echo "<div class='sent'>". $result["message"] ." <p class='date'>". $result["MessageTime"] . " </p></div>";
             } else {
-              echo " <div class='received'>". $result["message"] ."</div>";
+              echo " <div class='received'>". $result["message"] ." <p class='date'>". $result["MessageTime"] . " </p></div>";
             }
     }
        

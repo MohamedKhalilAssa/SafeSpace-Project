@@ -9,10 +9,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             require_once("SignupContr.php");
 
             //*Error Handling
+
             $Controller = new CheckInput();
             $errors = [];
             $image_errors =[];
-            if($Controller->isInputMissing($_POST["Fullname"], $_POST["email"], $_POST["password1"],$_POST["password2"], $_FILES["Image"])){
+            $imageFound = false;
+            if($Controller->isInputMissing($_POST["Fullname"], $_POST["email"], $_POST["password1"],$_POST["password2"])){
                 $errors["missingInput"] = "A Field is missing!";
             } 
             if(!$Controller->validateEmail($_POST["email"])){ 
@@ -32,7 +34,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             if(isset($_FILES["Image"])){
                 $file = $_FILES["Image"];
                 
-                if($file["size"] > 0){
+                if($file["size"] > 10){
+                    $imageFound = true;
                     if (!$Controller->isExtensionRight($file)){
                         $image_errors["extension"] = "File should be PNG, JPEG, or JPG!";
                         
@@ -45,10 +48,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             }
                         }
                     }
-                } else {
-                    $image_errors["missing"] = "Missing Image!";
                 }
-               
             }
             
                 
@@ -80,8 +80,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
             $Controller2->SignUp($_POST["Fullname"], $_POST["email"], $_POST["password1"]);
             
-            $Controller2->uploadImage($_FILES["Image"],$_POST["email"]);
-
+            if($imageFound){
+                $Controller2->uploadImage($_FILES["Image"],$_POST["email"]);
+            }
             header("Location: ../index.php?signup=success");
             $_SESSION["signup"] = true;
             unset($_POST["SignUp"]);

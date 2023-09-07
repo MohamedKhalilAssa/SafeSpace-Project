@@ -53,6 +53,13 @@ function loadFriendsInChat(){
     $.post("MessagingSystem/loadFriends.php").done(function(data){
         
         $(".friends").html(data);
+
+        // check messages in those friends;
+
+        setInterval(checkNewMessages,5000);
+
+
+        // Click event
         $(".user").click((e)=>{
 
             // showing the user you're currently messaging
@@ -60,7 +67,6 @@ function loadFriendsInChat(){
             const copy = $(e.currentTarget).children().clone();
             let copyName = copy[1].textContent;
             const profileId = $(e.currentTarget).data("id");
-            
             $(".onMessage").html(copy);
 
             $(".onMessage .name").replaceWith(`<a id='getId' data-needed=${profileId} class='name' href='usersPage.php?id=${profileId}'> ${copyName} </a>`);
@@ -70,7 +76,9 @@ function loadFriendsInChat(){
 
             loadMessages(profileId);
 
-            
+            // mark previous messages as read
+            $.post("MessagingSystem/markRead.php",{sentBy : profileId });
+            $(".unread").detach()
 
             // Clear previously started interval
             clearInterval(counter);
@@ -109,4 +117,14 @@ function scrollToBottom(elementSelector) {
     const element = $(elementSelector);
     const scrollHeight = element.prop("scrollHeight");
     element.animate({ scrollTop: scrollHeight }, 1000); // 500ms is the duration of the scroll animation
+}
+
+function checkNewMessages(){
+    document.querySelectorAll(".user").forEach((ele)=>{
+        const UserId = ele.dataset.id;
+        $.post("MessagingSystem/checkMessage.php",{sentBy: UserId}).done((data)=>{               
+            ele.innerHTML+= data;
+        });
+
+   })
 }

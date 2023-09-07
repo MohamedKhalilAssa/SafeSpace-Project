@@ -28,9 +28,9 @@ try{
     if($result){
         foreach($result as $row){
             if($row["sender_id"] == $connectedUser){
-                echo "<div class='sent'>". $row["message"] ."</div>";
+                echo "<div class='sent'>". $row["message"] ." <p class='date'>". $row["MessageTime"] . " </p></div>";
             } else {
-              echo " <div class='received'>". $row["message"] ."</div>";
+              echo " <div class='received'>". $row["message"] ." <p class='date'>". $row["MessageTime"] . " </p></div>";
             }
         }
        

@@ -56,19 +56,27 @@
 
                         <div class="input-field">
                             <img class="icons" src = "assets/lock-solid.svg" alt="Lock icon">
-                            <input class='input' type="password" name= "password1" maxlength="16" minlength="5" placeholder="Password" >
+                            <input class='input password1' type="password" name= "password1" maxlength="16" minlength="5" placeholder="Password" >
+                            <img class="icons eyes1" src = "assets/eye.svg" alt="eyes">
                         </div>
                         <div class="input-field signup-fields">
                             <img class="icons" src = "assets/lock-solid.svg" alt="Lock icon">
-                            <input class='input' type="password" name= "password2" maxlength="16" minlength="5" placeholder="Confirm Password" >
+                            <input class='input password2' type="password" name= "password2" maxlength="16" minlength="5" placeholder="Confirm Password" >
+                            <img class="icons eyes2" src = "assets/eye.svg" alt="eyes">
                         </div>
                     </div>
                     <div class="buttons-field">
                         <input class="btn active n1" type="submit" name="SignIn" value="Sign in">
                         <input class="btn inactive n2" type="submit" name="SignUp" value="Sign Up">
                     </div>
+                    <a target='_blank' class='resetPass' href='forgotPassword.php'>Forgot your password?</a>
                     <div class="errors">
                         <?php
+                        if(isset($_GET["password"])){
+                            if($_GET["password"] == "updated"){
+                                echo "<p class='success'>Password Updated</p>";
+                            }
+                        }
                             errors_view();
                             SigninErrors_view();
                          ?>
