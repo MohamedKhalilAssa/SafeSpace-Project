@@ -64,9 +64,8 @@
                         <?php
                     }
                 }   else {
-                    echo $_GET["selector"];
-                    echo $_GET["validator"]; 
-                    
+                    header("Location: " .dirname(__DIR__) . "/index.php");
+                    die();
                 }
            ?>
            

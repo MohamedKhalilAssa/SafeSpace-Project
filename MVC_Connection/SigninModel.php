@@ -6,7 +6,7 @@ require_once(dirname(__DIR__) . "/Headers/DB.php");
 class CheckWithDatabase2 extends DataBase{
     protected function checkEmail(string $email){
         try{
-            $sql = "SELECT * FROM users WHERE email = :email;";
+            $sql = "SELECT * FROM users WHERE email LIKE :email;";
             $statement = $this->connect()->prepare($sql);
             $statement->bindParam(':email',$email);
     
@@ -24,7 +24,7 @@ class CheckWithDatabase2 extends DataBase{
 
     protected function passwordInDB(string $email){
         try{
-            $sql = "SELECT * FROM users WHERE email = :email;";
+            $sql = "SELECT * FROM users WHERE email LIKE :email;";
             $statement = $this->connect()->prepare($sql);
             $statement->bindParam(':email',$email);
     
@@ -43,7 +43,7 @@ class CheckWithDatabase2 extends DataBase{
     }
     protected function onlineState(string $email){
         try{
-            $sql = "UPDATE users SET LoginState = 'Online'  WHERE email = :email;";
+            $sql = "UPDATE users SET LoginState = 'Online'  WHERE email LIKE :email;";
             $statement = $this->connect()->prepare($sql);
             $statement->bindParam(':email',$email);
     

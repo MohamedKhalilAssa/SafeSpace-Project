@@ -187,7 +187,7 @@
     right:0;
     margin: auto;
     width:70%;
-    height:95vh;
+    min-height:95vh;
     background-color:var(--backgroundColor-main);
     z-index: 100;
     padding:4rem 1rem;
@@ -196,7 +196,7 @@
 .wrapper{
     width:90%;
     height:100%;
-    
+    overflow: auto;
 }
 .overlay2{
     z-index: -1 ;

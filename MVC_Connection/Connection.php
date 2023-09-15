@@ -121,13 +121,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
             if ($errors){
                 $_SESSION["SigninErrors"] = $errors;
-
-
+                
                 header("Location: ../index.php");
                 die();
             }
 
-                //? creating a session using User ID
+                //? Session starting File
             require_once(dirname(__DIR__) . "/Headers/security_config.php");
 
             $newSession = session_create_id();
@@ -159,7 +158,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             die();
         }  
         catch(PDOException $e){
-            return "SignUp Failed! Please try again!" . $e->getMessage();
+            return "SignIn Failed! Please try again!" . $e->getMessage();
             die();
         }
     } 

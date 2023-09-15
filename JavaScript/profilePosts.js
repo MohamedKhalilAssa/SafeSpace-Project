@@ -89,6 +89,11 @@ function loadPosts(){
                     $(".post-container").fadeOut(600);
                     $(".post-container").detach();
                 })
+                $("#delete").click(()=>{
+                    $.post("postsSystem/deletePost.php", {rowId: ImageId}).done(function(){
+                            location.reload();
+                    });
+                })
             })
         });
         if(count == 1){

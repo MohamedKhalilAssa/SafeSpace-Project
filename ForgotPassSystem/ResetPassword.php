@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["forgotSubmit"])){
 
             $email = $_POST["email"];
 
-            $sql = "SELECT * FROM users WHERE Email = :email";
+            $sql = "SELECT * FROM users WHERE Email LIKE :email";
             $statement = $pdo->prepare($sql);
             $statement->bindValue(':email',$email);
 

@@ -42,8 +42,9 @@
                 <p class="email"><?=$_SESSION["email"]?></p>
             </div>
             <img class='settings' src='assets/settings.svg' alt='icon-settings'>  
-            <div class="btn-container">
+            <div class="btn-container profileBTNS">
                 <button class="btn logout" name="logout">LogOut</button>
+                <button class="change btn"><a href='changeData.php'>Change Data</a> </button>
             </div>
         </div>
 

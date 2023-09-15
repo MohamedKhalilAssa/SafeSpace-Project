@@ -44,6 +44,7 @@
                                          foreach($_SESSION["resetErrors"] as $error){
                                             echo "<p class='error'> $error </p>";
                                         }
+                                        unset($_SESSION["resetErrors"]);
                                     }
                                 }
                             }

@@ -6,7 +6,7 @@ class CheckWithDatabase extends DataBase{
     
     protected function checkEmail(string $email){
         try{
-            $sql = "SELECT * FROM users WHERE email = :email";
+            $sql = "SELECT * FROM users WHERE email LIKE :email";
             $statement = $this->connect()->prepare($sql);
             $statement->bindParam(':email',$email);
     
@@ -52,7 +52,7 @@ class QueryDatabase extends DataBase{
     protected function setImage(string $imageName, string $email){
         try{
             //? Preparing the Query 
-            $sql = "UPDATE users SET imageName = :imageName WHERE email = :email;";
+            $sql = "UPDATE users SET imageName = :imageName WHERE email LIKE :email;";
             $statement = $this->connect()->prepare($sql);
 
             //?execution

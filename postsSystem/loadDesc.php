@@ -35,6 +35,9 @@ try{
                 <h1 class='post-name'>". $row["Title"] . "</h1>
                 <p class='desc' >".  $row["Description"] . "</p>
             </div>
+            <div class='buttons-field'>
+            <input id='delete' class='btn' type='submit' name='Delete' value='Delete Post'>
+            </div>
          </div> 
          </div>";
     }
