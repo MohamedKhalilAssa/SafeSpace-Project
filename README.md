@@ -5,23 +5,33 @@ This is a social media website project created using HTML, CSS, JavaScript, jQue
 ## Features
 
 - **User Account Management**: Users can create accounts and log in securely.<br><br>
-  ![image](https://github.com/MohamedKhalilAssa/SafeSpace-Project/assets/123842557/77bac29a-0504-4475-9691-4f1a633a0454)<br>
+
+![image](https://github.com/MohamedKhalilAssa/SafeSpace-Project/assets/123842557/40691095-b47b-4a31-bb7c-84862312aafb)
+  <br>
 
 
 - **Friendship System**: Users can add friends to their network.<br><br>
-  ![image](https://github.com/MohamedKhalilAssa/SafeSpace-Project/assets/123842557/f1f6f227-2f86-49a6-8736-ab6e73cc0915)<br>
+
+ ![image](https://github.com/MohamedKhalilAssa/SafeSpace-Project/assets/123842557/e1c53298-437a-4045-aee6-1fb290bbf563)
+  <br>
 
 
 - **Post Sharing**: Users can create and share posts, with the option to restrict post visibility to friends only.<br><br>
-  ![image](https://github.com/MohamedKhalilAssa/SafeSpace-Project/assets/123842557/34f22c08-2c77-414f-b2a5-2c738eed8b59)<br><br>
+
+ ![image](https://github.com/MohamedKhalilAssa/SafeSpace-Project/assets/123842557/3a2eb417-56a0-4ca8-8e65-5f668b5a98f2)
+    <br><br>
 
 
 - **Messaging**: The messaging feature enables users to send and receive messages with their friends.<br><br>
-![image](https://github.com/MohamedKhalilAssa/SafeSpace-Project/assets/123842557/0f0b6dc1-2eab-468e-8721-2c90d65320a1)<br><br>
 
+![image](https://github.com/MohamedKhalilAssa/SafeSpace-Project/assets/123842557/7dcb285a-f838-4dc1-a6d9-953ed421f849)
+   <br><br>
 
+  
 - **Profile Customization**: Users have the ability to update and customize their profile data.<br><br>
-![image](https://github.com/MohamedKhalilAssa/SafeSpace-Project/assets/123842557/b553cb84-b645-4db8-abeb-e72c43cac9a7)<br><br>
+
+  ![image](https://github.com/MohamedKhalilAssa/SafeSpace-Project/assets/123842557/12c50061-f7ad-47a7-9dc1-405a1dd38e62)
+    <br><br>
 
 ## Technologies Used
 
