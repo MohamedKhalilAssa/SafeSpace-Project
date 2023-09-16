@@ -63,8 +63,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["forgotSubmit"])){
                     $mail->Host       = 'smtp.gmail.com';  
                     $mail->SMTPSecure = 'ssl';                   //Set the SMTP server to send through
                     $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-                    $mail->Username   = 'assaddiki.mohamed1@gmail.com';                     //SMTP username
-                    $mail->Password   = 'ddxkwoozavjggdlb';                               //SMTP password
+                    $mail->Username   = '';                     //SMTP username to be filled
+                    $mail->Password   = '';                               //SMTP password to be filled
                     $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
                 
                     //Recipients
