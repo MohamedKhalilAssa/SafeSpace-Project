@@ -51,7 +51,7 @@ This is a social media website project created using HTML, CSS, JavaScript, jQue
 
 2. **Database Setup**: Create a MySQL database for the project and import the provided SQL schema to set up the required tables.
 
-3. **Configuration**: Update the database connection settings in the PHP files (usually found in a `config.php` or `db.php` file) to match your database credentials.
+3. **Configuration**: Update the database connection settings in the PHP files to match your database credentials.
 
 4. **Web Server**: Make sure your project files are hosted on a web server, and PHP is enabled.
 
