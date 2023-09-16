@@ -71,7 +71,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["forgotSubmit"])){
                     $mail->setFrom('no-reply@safespace.com', 'SafeSpace');
                     $mail->addAddress($email);     //Add a recipient
 
-                    // $mail->addReplyTo('assaddiki.mohamed1@gmail.com', 'SafeSpace');
                 
                     //Content
                     $mail->isHTML(true);                                  //Set email format to HTML
