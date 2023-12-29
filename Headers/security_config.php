@@ -13,7 +13,14 @@ session_set_cookie_params([
     "domain" => "localhost" //TODO: Change the hostname in case the website is live 
 ]);
 
-session_start();
+
+
+if(!isset($_SESSION)){
+    ob_start();
+    session_start();
+    if(!isset($_SESSION["countAttempts"]))
+        $_SESSION["countAttempts"] = 0;
+}
 
 
 if (isset($_SESSION["userId"])){

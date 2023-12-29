@@ -19,14 +19,19 @@ SignUpButton.addEventListener("click",(element) => {
 
         title.textContent = "Sign Up";
         signupFieldsAppear(signupFields,icons);
-        $(".image-field").css("opacity","1");
-       
+        $(".image-field").css("max-height","180px");
+        setTimeout(()=>{
+            $(".image-field").fadeIn();
+        },0)
         errorsDiv.innerHTML="";
         
 
         setInactive(SignInButton);
     }
 })
+
+
+
 
 SignInButton.addEventListener("click",(element) => {
     
@@ -40,8 +45,10 @@ SignInButton.addEventListener("click",(element) => {
 
         title.textContent = "Sign In";
         signupFieldsDisappear(signupFields,icons);
-        $(".image-field").css("opacity","0");
-       
+        $(".image-field").css("max-height","0");
+        setTimeout(()=>{
+            $(".image-field").fadeOut(100);
+        },0)
 
         setInactive(SignUpButton);
     } 
@@ -66,7 +73,8 @@ let currentEmail = sessionStorage.getItem("currentEmail");
 
 if (state == "In"){
     setActive(SignInButton);
-    $(".image-field").css("opacity","0");
+    $(".image-field").fadeOut(500);
+
     setInactive(SignUpButton);
     if(currentEmail != ""){
         const emailPattern = /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/;
@@ -85,7 +93,8 @@ else if(state == "Up") {
 
     title.textContent = "Sign Up";
     signupFieldsAppear(signupFields,icons);
-    $(".image-field").css("opacity","1");
+    $(".image-field").fadeIn(500);
+
     setTimeout(()=> document.querySelectorAll(".btn").forEach((ele)=> ele.style.transition = `0.3s`) ,1000)
 
     if(currentName != ""){
@@ -114,8 +123,12 @@ function signupFieldsAppear(signup,Icons) {
         icon.style.maxHeight="30px";
     })
     $(".eyes2").css("max-height","35px");
+    $(".image-field").fadeIn();
+
 }
 function signupFieldsDisappear(signup,Icons) {
+    $(".image-field").fadeOut(100);
+
     signup.forEach((field) => {
         field.style.maxHeight = "0";
     })
@@ -123,6 +136,7 @@ function signupFieldsDisappear(signup,Icons) {
         icon.style.maxHeight="0";
     })
     $(".eyes2").css("max-height","0");
+    
 }
 
 function setActive(Element){

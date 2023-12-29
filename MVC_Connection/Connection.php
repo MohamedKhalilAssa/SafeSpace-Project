@@ -1,6 +1,5 @@
 <?php 
 
-
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     // ! Signing up Configurations
     if(isset($_POST["SignUp"])){
@@ -113,6 +112,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 } else {
                     if (!$SigninController->passwordCheck($password, $email)){
                         $errors["passwordCheck"] = "Incorrect Password!";
+                        $_SESSION["countAttempts"]+=1;
                     }
                 }
              }
@@ -120,6 +120,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 
             if ($errors){
+                if($_SESSION["countAttempts"] == 3){                    
+                    header("Location: ../index.php?attempts=3");
+                    die();
+                }
                 $_SESSION["SigninErrors"] = $errors;
                 
                 header("Location: ../index.php");

@@ -17,7 +17,7 @@ body{
 
 header{
     width:90%;
-    height:7vh;
+    height:9vh;
     background-color: var(--backgroundColor);
     display: flex;
     flex-direction: row;

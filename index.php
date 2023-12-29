@@ -6,7 +6,6 @@
     require_once(__DIR__ . "/Headers/checkLogInFirst.php") ;
     require_once("MVC_Connection/ImageErrorsView.php");
 ?>
-
 <!-- HTML Start -->
 <!DOCTYPE html>
 <html lang="en">
@@ -65,10 +64,14 @@
                             <img class="icons eyes2" src = "assets/eye.svg" alt="eyes">
                         </div>
                     </div>
-                    <div class="buttons-field">
+                    <?php if(isset($_SESSION["countAttempts"]) && $_SESSION["countAttempts"] > 2){ ?>                    
+                        <p>too many attempts. Try again Later.</p>
+                    <?php } else {?>
+                        <div class="buttons-field">
                         <input class="btn active n1" type="submit" name="SignIn" value="Sign in">
                         <input class="btn inactive n2" type="submit" name="SignUp" value="Sign Up">
-                    </div>
+                        </div>   
+                    <?php } ?>
                     <a target='_blank' class='resetPass' href='forgotPassword.php'>Forgot your password?</a>
                     <div class="errors">
                         <?php
