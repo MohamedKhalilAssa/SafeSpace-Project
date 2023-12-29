@@ -179,6 +179,7 @@ form {
         display: none ;
         margin-bottom:0rem;
         transition: all 0.3s ease-in;
+        overflow: hidden;
     }
     #img-para{
         width:100%;
